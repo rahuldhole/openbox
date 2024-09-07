@@ -7,8 +7,8 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Set password for the existing vscode user
-RUN id -u vscode &>/dev/null || (useradd -m -s /bin/bash vscode && usermod -aG sudo vscode)
-RUN echo "vscode:vscode" | chpasswd
+# RUN id -u vscode &>/dev/null || (useradd -m -s /bin/bash vscode && usermod -aG sudo vscode)
+# RUN echo "vscode:vscode" | chpasswd
 
 # Install necessary packages
 RUN apt-get update && \
