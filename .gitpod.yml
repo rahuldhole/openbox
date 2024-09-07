@@ -3,17 +3,28 @@
 image: mcr.microsoft.com/devcontainers/base:ubuntu
 
 tasks:
-  - name: tailscale-install
+  # command: has logic to restore the tailscale state from gitpod user's env vars
+  - name: tailscaled
     command: |
-      /bin/bash ./ghrc.io/tailscale.sh
-  - name: tailscale-entrypoint
+        if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+          sudo mkdir -p /var/lib/tailscale 
+          echo "${TAILSCALE_STATE_MYPROJECT}" | sudo tee /var/lib/tailscale/tailscaled.state > /dev/null
+        fi
+        sudo tailscaled
+  - name: tailscale
     command: |
-      /bin/bash ./ghrc.io/tailscale.sh
+        if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+          sudo -E tailscale up
+        else
+          sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"
+          # store the tailscale state into gitpod user
+          gp env TAILSCALE_STATE_MYPROJECT="$(sudo cat /var/lib/tailscale/tailscaled.state)"
+        fi
   - name: Setup
     init: |
       echo "gitpod:gitpod" | sudo chpasswd
       /bin/bash .devcontainer/setup.sh
-    command: sudo tailscale up
+    command: echo "Hello World"
 
 vscode:
   extensions:
