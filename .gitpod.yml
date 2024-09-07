@@ -4,19 +4,15 @@ image: mcr.microsoft.com/devcontainers/base:ubuntu
 
 tasks:
   - name: Setup
-    init: |
+    before: |
       echo "gitpod:gitpod" | sudo chpasswd
       /bin/bash .gitpod/setup.sh
-    command: echo "Welcome to Openbox!"
-  # command: has logic to restore the tailscale state from gitpod user's env vars
-  - name: tailscaled
-    command: |
+    init: |
         if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
           sudo mkdir -p /var/lib/tailscale 
           echo "${TAILSCALE_STATE_MYPROJECT}" | sudo tee /var/lib/tailscale/tailscaled.state > /dev/null
         fi
         sudo tailscaled
-  - name: tailscale
     command: |
         if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
           sudo -E tailscale up
