@@ -11,7 +11,7 @@
       "version": "latest"
     }
   },
-  // "postCreateCommand": "/bin/bash .devcontainer/setup.sh",
+  "postCreateCommand": "/bin/bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "extensions": [

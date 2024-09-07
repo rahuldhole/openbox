@@ -15,7 +15,6 @@ RUN apt-get update && \
     tilix \
     openbox \
     xrdp \
-    wget \
     fonts-liberation \
     libasound2 \
     libnspr4 \
@@ -39,4 +38,4 @@ EXPOSE 3389
 
 # Start the XRDP service
 CMD ["sh", "-c", "service xrdp start && tail -f /dev/null"]
-# DEBUG=pw:browser google-chrome --no-sandbox
+# DEBUG=pw:browser google-chrome --no-sandbox --disable-gpu
