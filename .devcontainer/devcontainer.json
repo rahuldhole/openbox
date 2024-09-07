@@ -1,15 +1,17 @@
 {
   "name": "My Codespace with Openbox, XRDP and Tailscale",
-  // Since google chrome is not working through Dockerfile I am using `image` directly in the devcontainer
   // "dockerFile": "../Dockerfile",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "runArgs": ["--device=/dev/net/tun"],
+  "runArgs": [
+    "--device=/dev/net/tun",
+    "--shm-size=2g" // chrome needs it
+  ],
   "features": {
     "ghcr.io/tailscale/codespace/tailscale": {
       "version": "latest"
     }
   },
-  "postCreateCommand": "/bin/bash .devcontainer/setup.sh",
+  // "postCreateCommand": "/bin/bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "extensions": [
