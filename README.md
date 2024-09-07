@@ -8,7 +8,7 @@ To setup a minimal virtual remote desktop environment Openbox+XRDP+Tilix and Tai
 
 - Github codespaces free tier is 60 Hours per month on 2 Cores (means 120 cpu hrs)
 - Gitpod give 50 hours per month.
-- So in total you may get 60+50 = 110 Hours per month free and powerful remote desktop
+- So in total you may get 60+50 = 110 Hours per month on and powerful remote desktop
 - If you work 7 Hours a day on average then 110/7 = 15.71 working days will be perfect for a month on free tier.
 
 ## Steps
