@@ -6,8 +6,8 @@ tasks:
   - name: Setup
     before: |
       echo "gitpod:gitpod" | sudo chpasswd
-      /bin/bash ./devcontainer/setup.sh
-      /bin/bash ./gitpod/tailscale.sh
+      /bin/bash ./.devcontainer/setup.sh
+      /bin/bash ./.gitpod/tailscale.sh
     init: |
         if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
           sudo mkdir -p /var/lib/tailscale 
