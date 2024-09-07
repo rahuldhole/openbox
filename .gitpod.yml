@@ -21,6 +21,7 @@ tasks:
         fi
   - name: Setup
     init: |
+      echo "gitpod:gitpod" | sudo chpasswd
       /bin/bash .devcontainer/setup.sh
     command: echo "Hello World"
 
