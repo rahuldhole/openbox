@@ -1,7 +1,6 @@
 # .devfile.yaml
 
 apiVersion: 1.0.0
-schemaVersion: 2.0.0
 metadata:
   name: my-devspace
   version: 1.0.0
@@ -54,4 +53,3 @@ tools:
     configuration:
       extensions:
         - ms-vscode-remote.remote-containers
-
