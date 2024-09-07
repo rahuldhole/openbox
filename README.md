@@ -28,6 +28,7 @@ sudo tailscale up --accept-routes
 - `Alt+Ctrl+t` open Tilix terminal
 - `Alt+Ctrl+e` open Edge browser
 - `Alt+Ctrl+g` open Google Chrome browser
+- `Alt+<Number>` to switch workspace. **Note**: Don't use numpad numbers.
 
 # Troubleshoot
 1. Browser crash on website open `sudo mount -t tmpfs -o size=2g tmpfs /dev/shm`
