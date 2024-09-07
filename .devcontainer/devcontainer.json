@@ -1,5 +1,5 @@
 {
-  "name": "My Codespace with Openbox, XRDP and Tailscale",
+  "name": "Openbox",
   // "dockerFile": "../Dockerfile",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "runArgs": [
