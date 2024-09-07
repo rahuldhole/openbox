@@ -1,0 +1,20 @@
+{
+  "name": "My Codespace with Openbox, XRDP and Tailscale",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Use the base Ubuntu image
+  "runArgs": ["--device=/dev/net/tun"],
+  "features": {
+    "ghcr.io/tailscale/codespace/tailscale": {
+      "version": "latest"
+    }
+  },
+  "postCreateCommand": "sudo apt update && sudo apt install -y openbox xrdp && sudo service xrdp restart",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  },
+  //"forwardPorts": [3389],  // Forward the RDP port
+  "remoteUser": "vscode"
+}
