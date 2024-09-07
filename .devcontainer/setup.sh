@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set password for the existing vscode user
-echo "vscode:vscode" | sudo chpasswd
-
 # Preconfigure xrdp to use US keyboard layout
 echo "xrdp xrdp/default_keyboard string us" | sudo debconf-set-selections
 
@@ -32,6 +29,9 @@ sudo dpkg -i ~/Downloads/microsoft-edge-stable_128.0.2739.67-1_amd64.deb
 sudo apt --fix-broken install -y
 rm -rf ~/Downloads
 ###USAGE: microsoft-edge-stable --no-sandbox
+
+# SHM size for browsers
+sudo mount -t tmpfs -o size=2g tmpfs /dev/shm
 
 # Restart the XRDP service
 sudo service xrdp start
