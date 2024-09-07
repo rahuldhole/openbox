@@ -31,4 +31,6 @@ sudo tailscale up --accept-routes
 - `Alt+<Number>` to switch workspace. **Note**: Don't use numpad numbers.
 
 # Troubleshoot
-1. Browser crash on website open `sudo mount -t tmpfs -o size=2g tmpfs /dev/shm`
+1. In Gitpod, if tailscaled is not started then follow:
+    - `sudo tailscaled`
+    - `sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"`
