@@ -16,20 +16,20 @@ RUN apt-get update && \
     tilix \
     openbox \
     xrdp \
-    fonts-liberation \
-    libnspr4 \
-    libnss3 \
-    xdg-utils \
-    libgconf-2-4 && \
     rm -rf /var/lib/apt/lists/*
-    # libasound2
 
 # Download and install Google Chrome
-RUN mkdir -p /home/vscode/Downloads && \
-    wget -P /home/vscode/Downloads https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    dpkg -i /home/vscode/Downloads/google-chrome-stable_current_amd64.deb && \
-    apt-get install -f && \
-    rm -rf /home/vscode/Downloads
+# fonts-liberation \
+# libasound2 \
+# libnspr4 \
+# libnss3 \
+# xdg-utils \
+# libgconf-2-4 && \
+# RUN mkdir -p /home/vscode/Downloads && \
+#     wget -P /home/vscode/Downloads https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+#     dpkg -i /home/vscode/Downloads/google-chrome-stable_current_amd64.deb && \
+#     apt-get install -f && \
+#     rm -rf /home/vscode/Downloads
 
 # Configure xrdp
 RUN echo "xrdp xrdp/default_keyboard string us" | debconf-set-selections
