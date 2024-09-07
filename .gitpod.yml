@@ -1,11 +1,12 @@
 # Empty Template for private repos: https://gitpod.new/
-image: ubuntu
+image: ubuntu:latest
 
 tasks:
-  - name: Setup
+  - name: Build
     init: |
-      /bin/bash .devcontainer/setup.sh
-    # command: /bin/bash .gitpod/start.sh
+      sudo apt update && sudo apt install -y git wget
+  - name: Setup
+    command: /bin/bash .devcontainer/setup.sh
 
 vscode:
   extensions:
