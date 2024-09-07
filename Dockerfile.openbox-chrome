@@ -17,12 +17,12 @@ RUN apt-get update && \
     openbox \
     xrdp \
     fonts-liberation \
-    libasound2 \
     libnspr4 \
     libnss3 \
     xdg-utils \
     libgconf-2-4 && \
     rm -rf /var/lib/apt/lists/*
+    # libasound2
 
 # Download and install Google Chrome
 RUN mkdir -p /home/vscode/Downloads && \
