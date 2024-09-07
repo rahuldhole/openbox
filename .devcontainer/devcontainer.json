@@ -7,6 +7,7 @@
     "--shm-size=2g" // chrome needs it
   ],
   "features": {
+    // https://github.com/tailscale/codespace/blob/main/README.md
     "ghcr.io/tailscale/codespace/tailscale": {
       "version": "latest"
     }

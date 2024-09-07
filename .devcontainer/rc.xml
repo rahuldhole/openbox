@@ -346,6 +346,12 @@
         </action>
     </keybind>
 
+    <keybind key="A-C-g">
+        <action name="Execute">
+          <command>google-chrome --no-sandbox</command>
+        </action>
+    </keybind>
+
     <keybind key="A-C-v">
         <action name="Execute">
           <command>code</command>
