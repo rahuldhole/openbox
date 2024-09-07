@@ -1,0 +1,57 @@
+# .devfile.yaml
+
+apiVersion: 1.0.0
+schemaVersion: 2.0.0
+metadata:
+  name: my-devspace
+  version: 1.0.0
+  description: DevSpace with Tailscale setup
+
+components:
+  - name: ubuntu
+    image: mcr.microsoft.com/devcontainers/base:ubuntu
+    type: image
+    memoryLimit: 2Gi
+    cpuLimit: 1
+
+commands:
+  - name: setup
+    actions:
+      - type: exec
+        command: /bin/bash
+        args:
+          - -c
+          - |
+            echo "gitpod:gitpod" | sudo chpasswd
+            /bin/bash ./.devcontainer/setup.sh
+            /bin/bash ./.gitpod/tailscale.sh
+            if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+              sudo mkdir -p /var/lib/tailscale 
+              echo "${TAILSCALE_STATE_MYPROJECT}" | sudo tee /var/lib/tailscale/tailscaled.state > /dev/null
+            fi
+            sudo tailscaled
+            if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+              sudo -E tailscale up
+            else
+              sudo -E tailscale up --hostname "devspaces-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"
+              # store the tailscale state into devspaces user
+              gp env TAILSCALE_STATE_MYPROJECT="$(sudo cat /var/lib/tailscale/tailscaled.state)"
+            fi
+
+projects:
+  - name: my-project
+    source:
+      type: git
+      location: https://github.com/rahuldhole/openbox
+
+tools:
+  - name: vscode
+    version: latest
+    type: image
+    mountSources: true
+    memoryLimit: 2Gi
+    cpuLimit: 1
+    configuration:
+      extensions:
+        - ms-vscode-remote.remote-containers
+
