@@ -1,5 +1,6 @@
 # Empty Template for private repos: https://gitpod.new/
-image: gitpod/workspace-full
+# image: gitpod/workspace-full
+image: mcr.microsoft.com/devcontainers/base:ubuntu
 
 tasks:
   # command: has logic to restore the tailscale state from gitpod user's env vars
