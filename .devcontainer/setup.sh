@@ -11,6 +11,10 @@ sudo DEBIAN_FRONTEND=noninteractive apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y tilix openbox 
 sudo DEBIAN_FRONTEND=noninteractive apt install -y xrdp
 
+# Openbox configuration
+mkdir -p ~/.config/openbox/
+cp .devcontainer/rc.xml ~/.config/openbox/
+openbox --reconfigure
 
 # Install Google Chrome
 # mkdir ~/Downloads
