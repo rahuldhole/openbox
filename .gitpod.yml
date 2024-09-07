@@ -1,0 +1,15 @@
+# Empty Template for private repos: https://gitpod.new/
+image: mcr.microsoft.com/devcontainers/base:ubuntu
+
+tasks:
+  - name: Setup
+    init: |
+      /bin/bash .devcontainer/setup.sh
+    # command: /bin/bash .gitpod/start.sh
+
+vscode:
+  extensions:
+    - ms-vscode-remote.remote-containers
+
+# Optional: Add Tailscale configuration if supported
+# For now, you need to manually handle Tailscale setup in GitPod
