@@ -7,8 +7,7 @@
       "version": "latest"
     }
   },
-  // TODO: automate xrdp keyboard and country settings
-  // "postCreateCommand": "sudo apt update && sudo apt install -y openbox xrdp && sudo service xrdp restart",
+  "postCreateCommand": "sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt install -y openbox xrdp && sudo service xrdp restart",
   "customizations": {
     "vscode": {
       "extensions": [
