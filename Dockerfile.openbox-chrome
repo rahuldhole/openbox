@@ -1,7 +1,7 @@
 # WARNING: Google chrome not working here
 
 # Start from a base Ubuntu image
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM ubuntu:latest
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
