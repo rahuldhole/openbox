@@ -12,7 +12,7 @@
       "version": "latest"
     }
   },
-  "postCreateCommand": "( echo 'vscode:vscode' | sudo chpasswd ) && /bin/bash .devcontainer/setup.sh",
+  "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd && /bin/bash .devcontainer/setup.sh'",
   "customizations": {
     "vscode": {
       "extensions": [
