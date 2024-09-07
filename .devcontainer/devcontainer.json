@@ -7,7 +7,8 @@
       "version": "latest"
     }
   },
-  "postCreateCommand": "sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt install -y openbox xrdp && sudo service xrdp restart",
+  // "postCreateCommand": "sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt install -y openbox xrdp tilix tmux && sudo service xrdp restart && echo 'vscode:vscode' | sudo chpasswd",
+  "postCreateCommand": "/bin/bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "extensions": [
