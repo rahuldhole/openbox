@@ -1,10 +1,8 @@
 # Empty Template for private repos: https://gitpod.new/
-image: gitpod/workspace-full
+image:
+  file: Dockerfile.openbox-chrome
 
 tasks:
-  - name: Build
-    init: |
-      sudo apt update && sudo apt install -y git wget
   - name: Setup
     command: /bin/bash .devcontainer/setup.sh
 
