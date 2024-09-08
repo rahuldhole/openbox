@@ -38,4 +38,4 @@ rm -rf ~/Downloads
 sudo mount -t tmpfs -o size=2g tmpfs /dev/shm
 
 # Restart the XRDP service
-sudo service xrdp start
+sudo service xrdp restart
