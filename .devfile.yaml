@@ -36,8 +36,7 @@ commands:
       label: "Setup Tailscale"
       component: tooling-container
       commandLine: |
-        id -u devspaces &>/dev/null || sudo useradd -m -s /bin/bash devspaces && \
-        echo "devspaces:devspaces" | sudo chpasswd && \
+        echo "$(whoami):$(whoami)" | sudo chpasswd && \
         /bin/bash ./.devcontainer/setup.sh && \
         /bin/bash ./.gitpod/tailscale.sh
       workingDir: /projects
