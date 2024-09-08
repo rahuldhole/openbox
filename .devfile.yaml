@@ -36,7 +36,7 @@ commands:
       label: "Setup Tailscale"
       component: tooling-container
       commandLine: |
-        echo "$(whoami):$(whoami)" | sudo chpasswd && \
+        echo "vscode:vscode" | sudo chpasswd && \
         /bin/bash ./.devcontainer/setup.sh && \
         /bin/bash ./.gitpod/tailscale.sh
       workingDir: /projects
