@@ -26,6 +26,3 @@ tasks:
 vscode:
   extensions:
     - ms-vscode-remote.remote-containers
-
-# Optional: Add Tailscale configuration if supported
-# For now, you need to manually handle Tailscale setup in GitPod

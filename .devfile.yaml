@@ -1,3 +1,75 @@
 # Manually creat empty workspace
 #sudo user password is unknown but it has docker preinstalled
 # https://devspaces.apps.sandbox-m3.1530.p1.openshiftapps.com/
+
+schemaVersion: 2.1.0
+metadata:
+  name: devspaces-tailscale-demo
+components:
+  - name: tooling-container
+    container:
+      image: mcr.microsoft.com/devcontainers/base:ubuntu
+      memoryRequest: 256M
+      memoryLimit: 1536M
+      cpuRequest: 100m
+      cpuLimit: 1500m
+      volumeMounts:
+        - name: tailscale-state
+          path: /var/lib/tailscale
+      mountSources: true
+      command:
+        - /bin/sh
+        - -c
+        - "tail -f /dev/null" # Keeps the container running
+      
+      endpoints:
+        - name: 3000-tcp
+          targetPort: 3000
+
+  - name: tailscale-state
+    volume:
+      size: 1Gi
+
+commands:
+  - id: setup-tailscale
+    exec:
+      label: "Setup Tailscale"
+      component: tooling-container
+      commandLine: |
+        echo "devspaces:devspaces" | sudo chpasswd && \
+        /bin/bash ./.devcontainer/setup.sh && \
+        /bin/bash ./.gitpod/tailscale.sh
+      workingDir: /projects
+
+  - id: init-tailscale
+    exec:
+      label: "Initialize Tailscale"
+      component: tooling-container
+      commandLine: |
+        if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+          sudo mkdir -p /var/lib/tailscale && \
+          echo "${TAILSCALE_STATE_MYPROJECT}" | sudo tee /var/lib/tailscale/tailscaled.state > /dev/null && \
+          sudo tailscaled
+        fi
+      workingDir: /projects
+
+  - id: start-tailscale
+    exec:
+      label: "Start Tailscale"
+      component: tooling-container
+      commandLine: |
+        if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+          sudo -E tailscale up
+        else
+          sudo -E tailscale up --hostname "devspaces-${DEVSPACES_USER// /-}-$(basename $(pwd))" && \
+          gp env TAILSCALE_STATE_MYPROJECT="$(sudo cat /var/lib/tailscale/tailscaled.state)"
+        fi
+      workingDir: /projects
+
+  - id: use-vscode-extensions
+    exec:
+      label: "Install VS Code Extensions"
+      component: tooling-container
+      commandLine: |
+        code-server --install-extension ms-vscode-remote.remote-containers
+      workingDir: /projects
