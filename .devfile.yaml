@@ -3,7 +3,6 @@
 apiVersion: 1.0.0
 metadata:
   name: my-devspace
-  description: DevSpace with Tailscale setup
 
 components:
   - name: ubuntu
