@@ -21,6 +21,14 @@ To setup a minimal virtual remote desktop environment Openbox+XRDP+Tilix and Tai
 
 After successfully started the Codespaces/Gitpod, wait for entrypoint script to run.
 
+0. Check status
+```sh
+sudo service xrdp status
+#sudo service xrdp restart
+
+sudo tailscale status
+```
+
 1. login and connect to tailscale
 ```sh
 # sudo tailscaled # this is only for Gitpod, when the `tailscaled` service is not started
