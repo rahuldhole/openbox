@@ -6,6 +6,12 @@ To setup a minimal virtual remote desktop environment Openbox+XRDP+Tilix and Tai
 
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=rahuldhole/openbox)
 
+<a href="https://devspaces.apps.sandbox-m3.1530.p1.openshiftapps.com/#https://github.com/rahuldhole/openbox">
+    <img src="https://www.svgrepo.com/show/354143/openshift.svg" alt="Open in OpenShift" width="25px"/> Open in OpenShift (NOt working well)
+</a>
+
+<br>
+
 - Github codespaces free tier is 60 Hours per month on 2 Cores (means 120 cpu hrs)
 - Gitpod give 50 hours per month.
 - So in total you may get 60+50 = 110 Hours per month on and powerful remote desktop
