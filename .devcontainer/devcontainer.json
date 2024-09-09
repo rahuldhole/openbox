@@ -13,6 +13,7 @@
     }
   },
   "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd && /bin/bash .devcontainer/setup.sh'",
+  "postStartCommand": "sudo service xrdp restart",
   "customizations": {
     "vscode": {
       "extensions": [
