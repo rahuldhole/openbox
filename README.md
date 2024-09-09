@@ -1,6 +1,6 @@
 # Openbox
 
-To setup a minimal virtual remote desktop environment Openbox+XRDP+Tilix and Tailscale for private remote access.
+To setup a minimal virtual remote desktop environment Openbox+XRDP+Kitty and Tailscale for private remote access.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new#https://github.com/rahuldhole/openbox)
 
@@ -43,7 +43,7 @@ sudo tailscale up
 3. Right click on blue screen for more options
 
 # Openbox Shortcuts
-- `Alt+Ctrl+t` open Tilix terminal
+- `Alt+Ctrl+k` open Kitty terminal
 - `Alt+Ctrl+e` open Edge browser
 - `Alt+Ctrl+g` open Google Chrome browser
 - `Alt+<Number>` to switch workspace. **Note**: Don't use numpad numbers.

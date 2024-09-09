@@ -13,7 +13,7 @@ RUN echo "vscode:vscode" | chpasswd
 # Install necessary packages
 RUN apt-get update && \
     apt-get install -y \
-    tilix \
+    kitty \
     openbox \
     xrdp \
     fonts-liberation \

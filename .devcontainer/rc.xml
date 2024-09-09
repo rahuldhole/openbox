@@ -334,9 +334,9 @@
       </action>
     </keybind>
 1
-    <keybind key="A-C-t">
+    <keybind key="A-C-k">
         <action name="Execute">
-          <command>tilix</command>
+          <command>kitty</command>
         </action>
     </keybind>
 
