@@ -307,14 +307,14 @@
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
-          <enabled>true</enabled>
-          <name>PCManFM</name>
+          <enabled>false</enabled>
+          <name>Nautilus</name>
         </startupnotify>
-        <command>pcmanfm</command>
+        <command>nautilus</command>
       </action>
     </keybind>
 
-    <keybind key="A-c">
+    <keybind key="A-v">
       <action name="Execute">
         <startupnotify>
         <enabled>true</enabled>

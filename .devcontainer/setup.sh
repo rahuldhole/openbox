@@ -9,7 +9,8 @@ echo "xrdp xrdp/default_keyboard string us" | sudo debconf-set-selections
 
 # Install Openbox, XRDP, and other necessary tools
 sudo DEBIAN_FRONTEND=noninteractive apt update
-sudo DEBIAN_FRONTEND=noninteractive apt install -y kitty openbox 
+sudo DEBIAN_FRONTEND=noninteractive apt install -y kitty openbox
+sudo DEBIAN_FRONTEND=noninteractive apt install -y  dbus-x11 diodon
 sudo DEBIAN_FRONTEND=noninteractive apt install -y xrdp
 
 # Openbox configuration
