@@ -314,17 +314,7 @@
       </action>
     </keybind>
 
-    <keybind key="W-v">
-      <action name="Execute">
-        <startupnotify>
-        <enabled>true</enabled>
-        <name>Didon</name>
-        </startupnotify>
-        <command>diodon</command>
-      </action>
-    </keybind>
-
-    <keybind key="A-C-c">
+    <keybind key="A-c">
       <action name="Execute">
         <startupnotify>
         <enabled>true</enabled>
