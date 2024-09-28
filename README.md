@@ -44,10 +44,12 @@ sudo tailscale up
 
 # Openbox Shortcuts
 - `Alt+<Number>` to switch workspace. **Note**: Don't use numpad numbers.
-- `Alt+Ctrl+k` open Kitty terminal
-- `Alt+Ctrl+g` open Google Chrome browser
-- `Alt+Ctrl+e` open Edge browser
-- `Alt+v`      open Didon clipboard manager
+- `Alt+Ctrl+k` open Kitty terminal `kitty`
+- `Alt+Ctrl+g` open Google Chrome browser `google-chrome --no-sandbox`
+- `Alt+Ctrl+e` open Edge browser `microsoft-edge --no-sandbox`
+- `Alt+Ctrl+v` open VS Code `code --no-sandbox .`
+- `Alt+v`      open Didon clipboard manager `diodon`
+**Note** Customise the shortcuts `.devcontainer/rc.xml`
 
 # Troubleshoot
 1. In Gitpod, if tailscaled is not started then follow:
