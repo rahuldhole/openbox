@@ -51,6 +51,10 @@ sudo tailscale up
 - `Alt+v`      open Didon clipboard manager `diodon`
 **Note** Customise the shortcuts `.devcontainer/rc.xml`
 
+# WARNINGS
+1. Do not open codespaces repository inside RDP!!! It may triggers some kind of network traffic recursion as a result system will hang no matter if you use all 32 cores.
+2. Ideally 2 cores is more than sufficient for most of the development work.
+
 # Troubleshoot
 1. In Gitpod, if tailscaled is not started then follow:
     - `sudo tailscaled`
