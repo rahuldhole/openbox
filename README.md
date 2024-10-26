@@ -46,6 +46,7 @@ sudo tailscale up
 - `Alt+t` to switch between windows in the current workspace like `Alt+TAB`
 - `Alt+d` Show or hide desktop
 - `Alt+<Left Right Arrow>` to switch between the adjecent workspaces.
+- `Alt+Shift+<Left Right Arrow>` to move current window to the adjecent workspaces.
 - `Alt+<Number>` to jump over the nth workspace. **Note**: Don't use numpad numbers.
 
 # Applications Shortcuts
