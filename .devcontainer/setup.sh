@@ -28,11 +28,11 @@ rm -rf ~/Downloads
 ###USAGE: DEBUG=pw:browser google-chrome --no-sandbox --disable-gpu
 
 # Install Edge
-mkdir ~/Downloads
-wget -P ~/Downloads https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_128.0.2739.67-1_amd64.deb
-sudo dpkg -i ~/Downloads/microsoft-edge-stable_128.0.2739.67-1_amd64.deb
-sudo apt --fix-broken install -y
-rm -rf ~/Downloads
+# mkdir ~/Downloads
+# wget -P ~/Downloads https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_128.0.2739.67-1_amd64.deb
+# sudo dpkg -i ~/Downloads/microsoft-edge-stable_128.0.2739.67-1_amd64.deb
+# sudo apt --fix-broken install -y
+# rm -rf ~/Downloads
 ###USAGE: microsoft-edge-stable --no-sandbox
 
 # Install VS Code
@@ -47,6 +47,8 @@ sudo apt update
 sudo apt install -y code # or code-insiders
 ###USAGE: code --no-sandbox ./foldername
 
+# Install Nextcloud to mount your cloud drive
+sudo apt install -y nextcloud-desktop
 
 # SHM size for browsers
 sudo mount -t tmpfs -o size=2g tmpfs /dev/shm

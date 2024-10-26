@@ -178,13 +178,13 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
-    <keybind key="W-Left">
+    <keybind key="A-Left">
       <action name="DesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="A-Right">
       <action name="DesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -202,13 +202,13 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-W-Left">
+    <keybind key="S-A-Left">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-W-Right">
+    <keybind key="S-A-Right">
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -271,7 +271,7 @@
         <desktop>6</desktop>
       </action>
     </keybind>
-    <keybind key="W-d">
+    <keybind key="A-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
     <keybind key="C-A-d">
@@ -292,13 +292,13 @@
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
-    <keybind key="A-Tab">
+    <keybind key="A-t">
       <action name="NextWindow"/>
     </keybind>
-    <keybind key="A-S-Tab">
+    <keybind key="A-S-t">
       <action name="PreviousWindow"/>
     </keybind>
-    <keybind key="C-A-Tab">
+    <keybind key="C-A-t">
       <action name="NextWindow">
         <panels>yes</panels>
         <desktop>yes</desktop>
@@ -308,10 +308,10 @@
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
-          <enabled>false</enabled>
-          <name>Nautilus</name>
+          <enabled>true</enabled>
+          <name>PCManFM</name>
         </startupnotify>
-        <command>nautilus</command>
+        <command>pcmanfm</command>
       </action>
     </keybind>
 

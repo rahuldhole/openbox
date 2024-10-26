@@ -46,7 +46,7 @@ sudo tailscale up
 - `Alt+<Number>` to switch workspace. **Note**: Don't use numpad numbers.
 - `Alt+Ctrl+k` open Kitty terminal `kitty`
 - `Alt+Ctrl+g` open Google Chrome browser `google-chrome --no-sandbox`
-- `Alt+Ctrl+e` open Edge browser `microsoft-edge --no-sandbox`
+- `Alt+Ctrl+e` open Edge browser `microsoft-edge --no-sandbox` if you wanr Edge then uncomment its installation from [setup.sh](./.devcontainer/setup.sh) 
 - `Alt+Ctrl+v` open VS Code `code --no-sandbox .`
 - `Alt+v`      open Didon clipboard manager `diodon`
 **Note** Customise the shortcuts `.devcontainer/rc.xml`
