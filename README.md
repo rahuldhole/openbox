@@ -43,13 +43,19 @@ sudo tailscale up
 3. Right click on blue screen for more options
 
 # Openbox Shortcuts
-- `Alt+<Number>` to switch workspace. **Note**: Don't use numpad numbers.
+- `Alt+t` to switch between windows in the current workspace like `Alt+TAB`
+- `Alt+d` Show or hide desktop
+- `Alt+<Left Right Arrow>` to switch between the adjecent workspaces.
+- `Alt+<Number>` to jump over the nth workspace. **Note**: Don't use numpad numbers.
+
+# Applications Shortcuts
 - `Alt+Ctrl+k` open Kitty terminal `kitty`
 - `Alt+Ctrl+g` open Google Chrome browser `google-chrome --no-sandbox`
 - `Alt+Ctrl+e` open Edge browser `microsoft-edge --no-sandbox` if you wanr Edge then uncomment its installation from [setup.sh](./.devcontainer/setup.sh) 
 - `Alt+Ctrl+v` open VS Code `code --no-sandbox .`
 - `Alt+v`      open Didon clipboard manager `diodon`
 **Note** Customise the shortcuts `.devcontainer/rc.xml`
+
 
 # WARNINGS
 1. Do not open codespaces repository inside RDP!!! It may triggers some kind of network traffic recursion as a result system will hang no matter if you use all 32 cores.
