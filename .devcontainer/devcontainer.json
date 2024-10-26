@@ -10,6 +10,10 @@
     // https://github.com/tailscale/codespace/blob/main/README.md
     "ghcr.io/tailscale/codespace/tailscale": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {
+        "version": "latest",
+        "moby": true
     }
   },
   "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd && /bin/bash .devcontainer/setup.sh'",
