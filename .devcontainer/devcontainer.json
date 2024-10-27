@@ -17,7 +17,7 @@
     }
   },
   "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd && /bin/bash .devcontainer/setup.sh'",
-  "postStartCommand": "diodon && sudo service xrdp restart",
+  "postStartCommand": "sudo service xrdp restart && diodon",
   "customizations": {
     "vscode": {
       "extensions": [
