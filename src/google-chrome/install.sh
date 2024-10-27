@@ -6,5 +6,6 @@ sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
 sudo apt --fix-broken install -y
 rm -rf ~/Downloads
 # SHM size for browsers
-sudo mount -t tmpfs -o size=2g tmpfs /dev/shm
+sudo echo "sudo mount -t tmpfs -o size=2g tmpfs /dev/shm" > /usr/local/sbin/shm-mount-entrypoint
+sudo chmod +x /usr/local/sbin/shm-mount-entrypoint
 ###USAGE: DEBUG=pw:browser google-chrome --no-sandbox --disable-gpu
