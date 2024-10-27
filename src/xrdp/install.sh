@@ -20,5 +20,5 @@ openbox --reconfigure
 
 # Restart the XRDP service
 sudo service xrdp restart
-sudo echo "sudo service xrdp restart" >> /usr/local/sbin/xrdp-entrypoint
+sudo echo "sudo service xrdp restart && diodon" >> /usr/local/sbin/xrdp-entrypoint
 sudo chmod +x /usr/local/sbin/xrdp-entrypoint
