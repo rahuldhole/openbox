@@ -1,8 +1,8 @@
 {
-  "id": "openbox-xrdp",
+  "id": "xrdp",
   "version": "1.0.0",
-  "name": "Openbox xRDP Tailscale",
-  "description": "Setup Openbox with xRDP and Tailscale.",
+  "name": "xRDP Openbox",
+  "description": "Setup xRDP with Openbox.",
   "documentationURL": "https://github.com/rahuldhole/openbox/blob/main/README.md",
   "entrypoint": "/usr/local/sbin/tailscaled-entrypoint",
   "installsAfter": [
