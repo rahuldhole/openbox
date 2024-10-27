@@ -12,8 +12,8 @@ jobs:
         with:
           publish-features: "true"
           base-path-to-features: "./src"
-          features-namespace: "rahuldhole/openbox"
-          templates-namespace: "rahuldhole/openbox"
+          features-namespace: "rahuldhole/openbox-xrdp"
+          templates-namespace: "rahuldhole/openbox-xrdp"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 permissions:
