@@ -25,9 +25,6 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y kitty openbox
 sudo DEBIAN_FRONTEND=noninteractive apt install -y dbus-x11 diodon
 sudo DEBIAN_FRONTEND=noninteractive apt install -y xrdp
 
-# Openbox configuration
-sudo mkdir -p ~/.config/openbox/
-
 # Create the xrdp-entrypoint script
 sudo bash -c 'cat <<EOF > /usr/local/sbin/xrdp-entrypoint
 #!/bin/bash
@@ -46,6 +43,7 @@ download() {
 
 # Download rc.xml if it does not exist
 if [ ! -f ~/.config/openbox/rc.xml ]; then
+  mkdir -p ~/.config/openbox
   download https://raw.githubusercontent.com/rahuldhole/openbox/refs/heads/main/src/xrdp/rc.xml > ~/.config/openbox/rc.xml
   openbox --reconfigure
 fi
