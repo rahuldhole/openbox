@@ -1,6 +1,6 @@
 {
   "id": "xrdp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "xRDP Openbox",
   "description": "Setup xRDP with Openbox.",
   "documentationURL": "https://github.com/rahuldhole/openbox/blob/main/README.md",
