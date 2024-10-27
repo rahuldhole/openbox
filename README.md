@@ -35,6 +35,7 @@ To setup a minimal virtual remote desktop environment Openbox+XRDP+Kitty+Diodon 
     "ghcr.io/rahuldhole/openbox/vscode:latest": {}
   },
   "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd'",
+  "postStartCommand": "/usr/local/sbin/xrdp-entrypoint",
   "remoteUser": "vscode"
 }
 ```
