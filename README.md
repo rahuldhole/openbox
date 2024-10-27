@@ -17,6 +17,28 @@ To setup a minimal virtual remote desktop environment Openbox+XRDP+Kitty+Diodon 
 - So in total you may get 60+50 = 110 Hours per month on and powerful remote desktop
 - If you work 7 Hours a day on average then 110/7 = 15.71 working days will be perfect for a month on free tier.
 
+## Installation
+```json
+// .devcontainer/devcontainer.json
+{
+  "name": "Openbox",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "runArgs": [
+    "--device=/dev/net/tun",// needed to tailscale
+    "--shm-size=2g" // needed for browsers
+  ],
+  "features": {
+    "ghcr.io/tailscale/codespace/tailscale:latest": {},
+    "ghcr.io/rahuldhole/openbox/xrdp:latest": {},
+    "ghcr.io/rahuldhole/openbox/google-chrome:latest": {},
+    "ghcr.io/rahuldhole/openbox/microsoft-edge:latest": {},
+    "ghcr.io/rahuldhole/openbox/vscode:latest": {}
+  },
+  "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd'",
+  "remoteUser": "vscode"
+}
+```
+
 ## Steps to connect RDP
 
 After successfully started the Codespaces/Gitpod, wait for entrypoint script to run.
