@@ -13,9 +13,10 @@ jobs:
           publish-features: "true"
           base-path-to-features: "./src"
           features-namespace: "rahuldhole/openbox"
-          templates-namespace: "rahuldhole/xrdp"
-          templates-namespace: "rahuldhole/google-chrome"
-          templates-namespace: "rahuldhole/microsoft-edge"
+          templates-namespace: |
+            rahuldhole/xrdp
+            rahuldhole/google-chrome
+            rahuldhole/microsoft-edge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 permissions:
