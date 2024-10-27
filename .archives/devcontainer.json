@@ -1,0 +1,29 @@
+{
+  "name": "Openbox",
+  // "dockerFile": "../Dockerfile",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "runArgs": [
+    "--device=/dev/net/tun",
+    "--shm-size=2g" // chrome needs it
+  ],
+  "features": {
+    // https://github.com/tailscale/codespace/blob/main/README.md
+    "ghcr.io/tailscale/codespace/tailscale": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {
+        "version": "latest",
+        "moby": true
+    }
+  },
+  "postCreateCommand": "/bin/bash -c 'echo \"vscode:vscode\" | sudo chpasswd && /bin/bash test/setup.sh'",
+  "postStartCommand": "sudo service xrdp restart && diodon",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}

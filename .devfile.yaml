@@ -37,7 +37,7 @@ commands:
       component: tooling-container
       commandLine: |
         echo "vscode:vscode" | sudo chpasswd && \
-        /bin/bash ./.devcontainer/setup.sh && \
+        /bin/bash ./test/setup.sh && \
         /bin/bash ./.gitpod/tailscale.sh
       workingDir: /projects
 
