@@ -15,7 +15,8 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y xrdp
 
 # Openbox configuration
 mkdir -p ~/.config/openbox/
-cp ./rc.xml ~/.config/openbox/
+wget -P ~/.config/openbox/ https://raw.githubusercontent.com/rahuldhole/openbox/refs/heads/main/src/xrdp/rc.xml
+
 openbox --reconfigure
 
 # Restart the XRDP service

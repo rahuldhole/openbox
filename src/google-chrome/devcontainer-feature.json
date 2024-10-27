@@ -1,6 +1,6 @@
 {
   "id": "google-chrome",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "Google Chrome",
   "description": "Install Google Chrome Browser.",
   "documentationURL": "https://github.com/rahuldhole/openbox/blob/main/README.md",
