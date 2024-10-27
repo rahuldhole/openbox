@@ -1,0 +1,11 @@
+{
+  "id": "vscode",
+  "version": "1.0.0",
+  "name": "Visual Studio Code",
+  "description": "Install VSCode Editor.",
+  "documentationURL": "https://github.com/rahuldhole/openbox/blob/main/README.md",
+  "entrypoint": "/usr/local/sbin/shm-mount-entrypoint",
+  "installsAfter": [
+    "ghcr.io/rahuldhole/openbox/xrdp"
+  ]
+}

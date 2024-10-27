@@ -17,6 +17,7 @@ jobs:
             rahuldhole/xrdp
             rahuldhole/google-chrome
             rahuldhole/microsoft-edge
+            rahuldhole/vscode
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 permissions:
