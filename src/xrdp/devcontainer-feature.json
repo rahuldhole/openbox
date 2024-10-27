@@ -4,7 +4,7 @@
   "name": "xRDP Openbox",
   "description": "Setup xRDP with Openbox.",
   "documentationURL": "https://github.com/rahuldhole/openbox/blob/main/README.md",
-  "entrypoint": "/usr/local/sbin/tailscaled-entrypoint",
+  "entrypoint": "/usr/local/sbin/xrdp-entrypoint",
   "installsAfter": [
     "ghcr.io/tailscale/codespace/tailscale"
   ]

@@ -1,0 +1,10 @@
+{
+  "id": "microsoft-edge",
+  "version": "1.0.0",
+  "name": "Microsoft Edge",
+  "description": "Install Microsoft Edge Browser.",
+  "documentationURL": "https://github.com/rahuldhole/openbox/blob/main/README.md",
+  "installsAfter": [
+    "ghcr.io/rahuldhole/openbox/xrdp"
+  ]
+}
