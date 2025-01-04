@@ -1,10 +1,10 @@
-# Openbox Remote Desktop Environment
+# Openbox: Minimal Remote Desktop Environment
 
-Setup a minimal virtual remote desktop environment with Openbox, XRDP, Kitty, Diodon, and Tailscale for private remote access.
+**Setup a private remote desktop environment** with Openbox, XRDP, Kitty, Diodon, and Tailscale for secure remote access.
 
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=rahuldhole/openbox)
 
-> **Note:** Gitpod and OpenShift are currently using raw scripts for setup. Contributions to improve these configurations and transition to package-based setups are welcome.
+**Note:** Gitpod and OpenShift currently use raw scripts. Contributions to update these to packaged solutions are welcome.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new#https://github.com/rahuldhole/openbox)
 
@@ -14,25 +14,24 @@ Setup a minimal virtual remote desktop environment with Openbox, XRDP, Kitty, Di
 
 ---
 
-### Free Tier Overview
-- **GitHub Codespaces:** 60 hours/month on 2 cores (120 CPU hours total).
-- **Gitpod:** 50 hours/month.
+## Free Remote Desktop Hours
 
-**Total:** 110 hours/month of powerful remote desktop usage.
-- **Working days:** Approximately 15.7 days/month on free tier (based on 7-hour workdays).
+- **GitHub Codespaces:** 60 hours/month (2 cores) = 120 CPU hours
+- **Gitpod:** 50 hours/month
+
+**Total:** 110 hours/month (~15.7 working days at 7 hours/day)
 
 ---
 
-## Installation
-Add the following to your `.devcontainer/devcontainer.json` file:
+## Manual Codespaces Installation
 
 ```json
 {
   "name": "Openbox",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "runArgs": [
-    "--device=/dev/net/tun", // Required for Tailscale
-    "--shm-size=2g" // Recommended for browsers
+    "--device=/dev/net/tun", // needed for Tailscale
+    "--shm-size=2g" // needed for browsers
   ],
   "features": {
     "ghcr.io/tailscale/codespace/tailscale:latest": {},
@@ -51,71 +50,71 @@ Add the following to your `.devcontainer/devcontainer.json` file:
 
 ## Steps to Connect via RDP
 
-1. **Check Service Status:**
-   ```sh
-   sudo service xrdp status
-   sudo tailscale status
-   # (Optional) Restart service if necessary
-   # sudo service xrdp restart
-   ```
+### 1. Verify Status
+```sh
+sudo service xrdp status
+sudo tailscale status
+```
 
-2. **Login to Tailscale:**
-   ```sh
-   # For Gitpod, start the Tailscale daemon if not running
-   # sudo tailscaled
+### 2. Log In and Connect to Tailscale
+```sh
+sudo tailscale up
+```
 
-   sudo tailscale up
-   ```
+### 3. Connect Using RDP Client
 
-3. **Open RDP Client:**
-   - Use the Tailscale VPN IP of your Codespaces or Gitpod environment.
-   - RDP credentials:
-     - **Codespaces:** `vscode:vscode`
-     - **Gitpod:** `gitpod:gitpod`
+- Use the Tailscale VPN IP of the Codespaces or Gitpod instance.
+- **RDP User Credentials:**
+  - Codespaces: `vscode:vscode`
+  - Gitpod: `gitpod:gitpod`
 
-4. **Interact with Openbox:**
-   - Right-click on the blue screen to access more options.
+### 4. Openbox Navigation
+
+- Right-click on the blue screen to access more options.
 
 ---
 
 ## Openbox Shortcuts
 
-### Window Management
-- **`Alt+t`**: Switch between windows in the current workspace (similar to `Alt+Tab`)
-- **`Alt+d`**: Show or hide the desktop
-- **`Alt+<Left/Right Arrow>`**: Switch between adjacent workspaces
-- **`Alt+Shift+<Left/Right Arrow>`**: Move current window to an adjacent workspace
-- **`Alt+<Number>`**: Jump to the nth workspace (**Note:** Do not use numpad numbers)
+| Shortcut                      | Action                                      |
+|-------------------------------|---------------------------------------------|
+| `Alt + T`                     | Switch between windows in the current workspace |
+| `Alt + D`                     | Show or hide the desktop                   |
+| `Alt + <Left/Right Arrow>`    | Switch between adjacent workspaces         |
+| `Alt + Shift + <Left/Right>`  | Move current window to adjacent workspaces |
+| `Alt + <Number>`              | Jump to the nth workspace (non-numpad keys)|
 
-### Application Shortcuts
-- **`Alt+Ctrl+k`**: Open Kitty terminal (`kitty`)
-- **`Alt+Ctrl+g`**: Open Google Chrome browser (`google-chrome --no-sandbox`)
-- **`Alt+Ctrl+e`**: Open Microsoft Edge browser (`microsoft-edge --no-sandbox`)
-- **`Alt+Ctrl+v`**: Open Visual Studio Code (`code --no-sandbox .`)
-- **`Alt+v`**: Open Diodon clipboard manager (`diodon`)
+---
 
-> **Note:** Customize shortcuts in `~/.config/openbox/rc.xml`.
+## Application Shortcuts
+
+| Shortcut            | Application                        |
+|---------------------|------------------------------------|
+| `Alt + Ctrl + K`    | Open Kitty terminal (`kitty`)      |
+| `Alt + Ctrl + G`    | Open Google Chrome (`--no-sandbox`)|
+| `Alt + Ctrl + E`    | Open Microsoft Edge (`--no-sandbox`)|
+| `Alt + Ctrl + V`    | Open VS Code (`code --no-sandbox .`)|
+| `Alt + V`           | Open Diodon clipboard manager     |
+
+**Note:** Customize shortcuts in `~/.config/openbox/rc.xml`.
 
 ---
 
 ## Warnings
-1. **Avoid Opening Codespaces Repository Inside RDP:**
-   - May cause recursive network traffic leading to system hangs, even on high-spec machines.
 
-2. **Resource Requirements:**
+1. **Do not open the Codespaces repository inside RDP.**
+   - This may trigger excessive network traffic and system hangs.
+2. **Resource Usage:**
    - 2 cores are sufficient for most development tasks.
 
 ---
 
 ## Troubleshooting
 
-### Gitpod Specific
-- If Tailscale is not started:
-  ```sh
-  sudo tailscaled
-  sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"
-  ```
-
----
+1. In Gitpod, if Tailscale is not started:
+    ```sh
+    sudo tailscaled
+    sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"
+    ```
 
 Contributions are welcome! Feel free to submit pull requests to enhance functionality or improve documentation.
