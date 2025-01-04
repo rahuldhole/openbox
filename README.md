@@ -23,7 +23,7 @@
 
 ---
 
-## Manual Codespaces Installation
+## Sample installation for customizing your private dev container
 
 ```json
 {
