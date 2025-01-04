@@ -1,33 +1,38 @@
-# Openbox
+# Openbox Remote Desktop Environment
 
-To setup a minimal virtual remote desktop environment Openbox+XRDP+Kitty+Diodon and Tailscale for private remote access.
+Setup a minimal virtual remote desktop environment with Openbox, XRDP, Kitty, Diodon, and Tailscale for private remote access.
 
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=rahuldhole/openbox)
 
+> **Note:** Gitpod and OpenShift are currently using raw scripts for setup. Contributions to improve these configurations and transition to package-based setups are welcome.
 
-Note: Gitpod and OpenShift is still installing raw scripts. I invite you to please contribute and update it to use the packages.
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new#https://github.com/rahuldhole/openbox)
 
 <a href="https://devspaces.apps.sandbox-m3.1530.p1.openshiftapps.com/#https://github.com/rahuldhole/openbox">
-    <img src="https://www.svgrepo.com/show/354143/openshift.svg" alt="Open in OpenShift" width="25px"/> Open in OpenShift (NOt working well)
+    <img src="https://www.svgrepo.com/show/354143/openshift.svg" alt="Open in OpenShift" width="25px"/> Open in OpenShift (Currently not stable)
 </a>
 
-<br>
+---
 
-- Github codespaces free tier is 60 Hours per month on 2 Cores (means 120 cpu hrs)
-- Gitpod give 50 hours per month.
-- So in total you may get 60+50 = 110 Hours per month on and powerful remote desktop
-- If you work 7 Hours a day on average then 110/7 = 15.71 working days will be perfect for a month on free tier.
+### Free Tier Overview
+- **GitHub Codespaces:** 60 hours/month on 2 cores (120 CPU hours total).
+- **Gitpod:** 50 hours/month.
+
+**Total:** 110 hours/month of powerful remote desktop usage.
+- **Working days:** Approximately 15.7 days/month on free tier (based on 7-hour workdays).
+
+---
 
 ## Installation
+Add the following to your `.devcontainer/devcontainer.json` file:
+
 ```json
-// .devcontainer/devcontainer.json
 {
   "name": "Openbox",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "runArgs": [
-    "--device=/dev/net/tun",// needed to tailscale
-    "--shm-size=2g" // needed for browsers
+    "--device=/dev/net/tun", // Required for Tailscale
+    "--shm-size=2g" // Recommended for browsers
   ],
   "features": {
     "ghcr.io/tailscale/codespace/tailscale:latest": {},
@@ -42,52 +47,75 @@ Note: Gitpod and OpenShift is still installing raw scripts. I invite you to plea
 }
 ```
 
-## Steps to connect RDP
+---
 
-After successfully started the Codespaces/Gitpod, wait for entrypoint script to run.
+## Steps to Connect via RDP
 
-0. Check status
-```sh
-sudo service xrdp status
-#sudo service xrdp restart
+1. **Check Service Status:**
+   ```sh
+   sudo service xrdp status
+   sudo tailscale status
+   # (Optional) Restart service if necessary
+   # sudo service xrdp restart
+   ```
 
-sudo tailscale status
-```
+2. **Login to Tailscale:**
+   ```sh
+   # For Gitpod, start the Tailscale daemon if not running
+   # sudo tailscaled
 
-1. login and connect to tailscale
-```sh
-# sudo tailscaled # this is only for Gitpod, when the `tailscaled` service is not started
+   sudo tailscale up
+   ```
 
-sudo tailscale up
-```
+3. **Open RDP Client:**
+   - Use the Tailscale VPN IP of your Codespaces or Gitpod environment.
+   - RDP credentials:
+     - **Codespaces:** `vscode:vscode`
+     - **Gitpod:** `gitpod:gitpod`
 
-2. Open RDP client and type tailscaled VPN IP of the codespaces or gitpod
-- RDP User for Codespaces `vscode:vscode`
-- RDP User for Gitpod `gitpod:gitpod`
+4. **Interact with Openbox:**
+   - Right-click on the blue screen to access more options.
 
-3. Right click on blue screen for more options
+---
 
-# Openbox Shortcuts
-- `Alt+t` to switch between windows in the current workspace like `Alt+TAB`
-- `Alt+d` Show or hide desktop
-- `Alt+<Left Right Arrow>` to switch between the adjecent workspaces.
-- `Alt+Shift+<Left Right Arrow>` to move current window to the adjecent workspaces.
-- `Alt+<Number>` to jump over the nth workspace. **Note**: Don't use numpad numbers.
+## Openbox Shortcuts
 
-# Applications Shortcuts
-- `Alt+Ctrl+k` open Kitty terminal `kitty`
-- `Alt+Ctrl+g` open Google Chrome browser `google-chrome --no-sandbox`
-- `Alt+Ctrl+e` open Edge browser `microsoft-edge --no-sandbox`
-- `Alt+Ctrl+v` open VS Code `code --no-sandbox .`
-- `Alt+v`      open Didon clipboard manager `diodon`
-**Note** Customise the shortcuts `~/.config/openbox/rc.xml`
+### Window Management
+- **`Alt+t`**: Switch between windows in the current workspace (similar to `Alt+Tab`)
+- **`Alt+d`**: Show or hide the desktop
+- **`Alt+<Left/Right Arrow>`**: Switch between adjacent workspaces
+- **`Alt+Shift+<Left/Right Arrow>`**: Move current window to an adjacent workspace
+- **`Alt+<Number>`**: Jump to the nth workspace (**Note:** Do not use numpad numbers)
 
+### Application Shortcuts
+- **`Alt+Ctrl+k`**: Open Kitty terminal (`kitty`)
+- **`Alt+Ctrl+g`**: Open Google Chrome browser (`google-chrome --no-sandbox`)
+- **`Alt+Ctrl+e`**: Open Microsoft Edge browser (`microsoft-edge --no-sandbox`)
+- **`Alt+Ctrl+v`**: Open Visual Studio Code (`code --no-sandbox .`)
+- **`Alt+v`**: Open Diodon clipboard manager (`diodon`)
 
-# WARNINGS
-1. Do not open codespaces repository inside RDP!!! It may triggers some kind of network traffic recursion as a result system will hang no matter if you use all 32 cores.
-2. Ideally 2 cores is more than sufficient for most of the development work.
+> **Note:** Customize shortcuts in `~/.config/openbox/rc.xml`.
 
-# Troubleshoot
-1. In Gitpod, if tailscaled is not started then follow:
-    - `sudo tailscaled`
-    - `sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"`
+---
+
+## Warnings
+1. **Avoid Opening Codespaces Repository Inside RDP:**
+   - May cause recursive network traffic leading to system hangs, even on high-spec machines.
+
+2. **Resource Requirements:**
+   - 2 cores are sufficient for most development tasks.
+
+---
+
+## Troubleshooting
+
+### Gitpod Specific
+- If Tailscale is not started:
+  ```sh
+  sudo tailscaled
+  sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"
+  ```
+
+---
+
+Contributions are welcome! Feel free to submit pull requests to enhance functionality or improve documentation.
