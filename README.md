@@ -57,11 +57,21 @@ sudo service xrdp status
 
 ### 2.1 Option 1: TCP Connect via Tailscale VPN
 
-If you prefer not to use Tailscale, you can tunnel XRDP traffic via Serveo.net.
-
 ```sh
 sudo tailscale status
 sudo tailscale up
+```
+
+### 2.2 Option 2: TCP Connect via SSH tunnels
+
+If you prefer not to use Tailscale, you can tunnel XRDP traffic via Serveo.net.
+
+Add `sshd` server feature
+
+```sh
+"features": {
+  "ghcr.io/devcontainers/features/sshd:1.0.10": {}
+}
 ```
 
 On the container/machine run:
@@ -75,15 +85,6 @@ Then, from your local machine:
 Now connect your RDP client to `localhost:8888`
 
 Read more: [https://serveo.net/](https://serveo.net/)
-
-### 2.2 Option 2: TCP Connect via SSH tunnels
-
-Add `sshd` server feature
-```sh
-"features": {
-  "ghcr.io/devcontainers/features/sshd:1.0.10": {}
-}
-```
 
 
 
