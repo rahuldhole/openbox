@@ -72,15 +72,16 @@ Add `sshd` server feature
 "features": {
   "ghcr.io/devcontainers/features/sshd:1.0.10": {}
 }
+// this starts ssh server at port 2222
 ```
 
 On the container/machine run:
 
-`ssh -R myalias:22:localhost:22 serveo.net`
+`ssh -R myalias:22:localhost:2222 serveo.net`
 
 Then, from your local machine:
 
-`ssh -L 8888:localhost:3389 -J serveo.net user@myalias`
+`ssh -L 8888:localhost:3389 -J serveo.net vscode@myalias`
 
 Now connect your RDP client to `localhost:8888`
 
