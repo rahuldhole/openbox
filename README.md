@@ -53,13 +53,39 @@
 ### 1. Verify Status
 ```sh
 sudo service xrdp status
-sudo tailscale status
 ```
 
-### 2. Log In and Connect to Tailscale
+### 2.1 Option 1: TCP Connect via Tailscale VPN
+
+If you prefer not to use Tailscale, you can tunnel XRDP traffic via Serveo.net.
+
 ```sh
+sudo tailscale status
 sudo tailscale up
 ```
+
+On the container/machine run:
+
+`ssh -R myalias:22:localhost:22 serveo.net`
+
+Then, from your local machine:
+
+`ssh -L 8888:localhost:3389 -J serveo.net user@myalias`
+
+Now connect your RDP client to `localhost:8888`
+
+Read more: [https://serveo.net/](https://serveo.net/)
+
+### 2.2 Option 2: TCP Connect via SSH tunnels
+
+Add `sshd` server feature
+```sh
+"features": {
+  "ghcr.io/devcontainers/features/sshd:1.0.10": {}
+}
+```
+
+
 
 ### 3. Connect Using RDP Client
 
